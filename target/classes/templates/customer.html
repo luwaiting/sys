@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <!-- normalize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- 客製化bootstrap -->
+    <link rel="stylesheet" th:href="@{/scss/bootstrap}" href="../static/scss/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+    .navbar-custom {
+            background-color: rgb(243, 247, 243);
+        }
+        /* Modify brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: rgb(243, 249, 243);
+        }
+    </style>
+    <!-- customerstyle.css  -->
+    <link rel="stylesheet" th:href="@{/css/customerstyle.css}" href="../static/css/customerstyle.css">
+</head>
+
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand">即期品預購專區</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" th:href="@{/home}">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- navbar end -->
+
+<div class="sideBar">
+    <ul class="nav">
+      <li>
+        <a href="#goods">
+          <i class="fa-solid fa-chart-simple"></i>
+          <span>商品列表</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="nav">
+      <li>
+        <a href="#buy">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>訂購專區</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+<div>
+  <h2 class="place">商品列表</h2>
+</div>
+
+<section id="goods">
+  <br>
+  <div class="box-container chartCard mt-5">
+    <div class="chartBox">
+      <table class="table">
+          <thead class="thead-dark">
+            
+            <h1>商品列表</h1>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="good,iterStat:${list}">
+              <th scope="row" th:text="${iterStat.count}">id</th>
+              <td th:text="${good.name}">itemName</td>
+              <td th:text="${good.amount}">amount</td>
+              <td th:text="${good.price}">price</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</section>
+  
+
+
+
+<section id="buy">
+    <div class="box-container chartCard martop marbt">
+        <div class="chartBox">
+<!--            <form action="" >-->
+                <h1>訂購專區</h1>
+                <h5>商品選擇：</h5>
+                <select id="dropdown1" onchange="select()" name="item">
+                    <option id="guess" class="pt-2" >請選擇購買品項</option>
+                    <optgroup label="itemID" th:each="good,iterStat:${list}">
+                        <option th:text="${iterStat.count}">id</option>
+                    </optgroup>
+<!--                    <optgroup label="item2">-->
+<!--                        <option>flavor5</option>-->
+<!--                        <option>flavor6</option>-->
+<!--                        <option>flavor7</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="item3">-->
+<!--                        <option>flavor8</option>-->
+<!--                        <option>flavor9</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="item4">-->
+<!--                        <option>flavor10</option>-->
+<!--                        <option>flavor11</option>-->
+<!--                        <option>flavor12</option>-->
+<!--                        <option>flavor13</option>-->
+<!--                        <option>flavor14</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="item5">-->
+<!--                        <option>flavor1</option>-->
+<!--                        <option>flavor2</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="item6">-->
+<!--                        <option>flavor15</option>-->
+<!--                        <option>flavor16</option>-->
+<!--                        <option>flavor17</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="item7">-->
+<!--                        <option>flavor18</option>-->
+<!--                        <option>flavor19</option>-->
+<!--                    </optgroup>-->
+                </select>
+                
+                <select id="dropdown2" onchange="select()" onclick="print()">
+                    <option>購買數量(最多3個)</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+<!--                <form action="" method="">-->
+<!--                    <div id="show"></div>-->
+<!--                </form>-->
+
+                <div id="discount"></div>
+                <div id="help"></div>
+                <br>
+                <div>
+                  <p class="place">
+                    小知識：如果將剩食轉為給予需要的人們，這些剩食的量可以養活18億的人口。
+                    根據統計，剩食佔全球溫室氣體排放量8%，假若將剩食當作一個國家來看，溫室氣體排放量將僅次於中國與美國之後，位居全世界第三。
+                    因此，剩食是氣候變遷與實現社會正義之間的難解問題之一，
+                    剩食碳足跡不僅來自於運輸，在加工、生產方面以及當作垃圾處理所需要消耗的能源，像是掩埋場所釋放的大量甲烷。所以攜手減少剩食可以大大幫助環境喔!</p>
+                    <img th:src="@{/image/drink.jpg}" src="../static/image/drink.jpg" width="200px" alt="">
+                    <img th:src="@{/image/good.jpg}" src="../static/image/good.jpg" width="100" class="picture">
+                </div>
+                
+
+                <div class="button-holder">
+                  <button type="button" class="btn btn-secondary" onclick="pop()">送出預購</button>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+    <div>
+      <br>
+    </div>
+</section>
+
+
+
+
+<!-- javascript -->
+<script>
+    function select(){
+        var date = new Date();
+        var x = document.getElementById("dropdown1").value
+        var y = document.getElementById("dropdown2").value
+        document.getElementById("show").innerHTML="您的選擇："+x+" / "+y+"個"
+
+    }
+
+    function print(){
+        var x = document.getElementById("dropdown2").value
+            if (x == 1) {
+                document.getElementById("discount").innerHTML="所有商品都享有七折優惠啦~就是上面顯示的價格喔"		
+                document.getElementById("help").innerHTML="您對友善環境的影響力：減少因廚餘量產生的溫室氣體量7%"		
+            }else if (x == 2) {
+                document.getElementById("discount").innerHTML="所有商品都享有七折優惠啦~就是上面顯示的價格喔"			
+                document.getElementById("help").innerHTML="您對友善環境的影響力：減少因廚餘量產生的溫室氣體量7%"	
+            }else{
+                document.getElementById("discount").innerHTML="所有商品都享有七折優惠啦~就是上面顯示的價格喔"			
+                document.getElementById("help").innerHTML="您對友善環境的影響力：減少因廚餘量產生的溫室氣體量7%"	
+            }
+    }
+
+    function pop(){
+      window.alert("已經收到您的預購單囉~請記得於當日取貨謝謝!   (小提醒：若預訂後未準時領取累計兩次後將取消您的預購功能喔!)")
+    }
+</script>
+
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+</body>
+</html>

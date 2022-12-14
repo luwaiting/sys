@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <table class="table-header">
+        <thead>
+             <tr>
+                 <th>#</th>
+                 <th>品名</th>
+                 <th>價格</th>
+                 <th>有效日期</th>
+                 <th>數量</th>
+             </tr>
+        </thead>
+<!--        th:text="current:${#date.format(new java.util.Date,'yyyy-MM-dd HH:mm')}" th:text="gd:${#date.format(good.expiration,'yyyy-MM-dd HH:mm')}"-->
+        <tbody>
+            <tr th:each="good,iterStat:${list}">
+                  <td th:text="${iterStat.count}">id</td>
+                  <td th:text="${good.name}">name</td>
+                  <td th:text="${good.price}">price</td>
+                  <td th:text="${good.expiration}"> >expire</td>
+                  <td th:text="${good.amount}">amount</td>
+            </tr>
+         </tbody>
+    </table>
+</div>
+</body>
+</html>

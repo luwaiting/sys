@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai&family=Noto+Serif+TC:wght@500&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arima Madurai', cursive,'Noto Serif TC', serif;
+  box-sizing: border-box;    
+}
+
+
+.chartMenu {
+  width: 100vw;
+  height: 50px;
+  background: #1A1A1A;
+  color: white;
+}
+.chartMenu p {
+  padding: 10px;
+  font-size: 20px;
+}
+.chartCard {
+  height: 90vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 150px 0px;
+}
+.chartBox {
+  height: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 3px black;
+  background: white;
+  width: 50%;
+}
+
+.content{
+  padding: 0 0 0 10%;
+}
+
+.cargo-table{
+  margin-top: 100px;
+  height: 500px;
+}
+
+.swiper{
+  width: 80%;
+  height: 850px;
+  margin-top: 20%;
+}
+
+.blank{
+  height: 10%;
+}
+
+.sideBar{
+  margin-top: 56px;
+  position: fixed;
+  width: 10%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background: #9D9D9D;
+}
+
+.sideBar ul li{
+  margin: 50px 0;
+  padding: 0 20px;
+}
+
+.sideBar ul li a{
+  color: white;
+  font-size: 20px;
+}
+
+.sideBar ul li a:hover{
+  color: black;
+  margin-left: 30px;
+  transition: 0.4s;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thead-primary tr th{
+  width: 33%;
+}
